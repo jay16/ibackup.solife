@@ -1,0 +1,37 @@
+%h1 Listing phones
+
+%table
+  %tr
+    %th Serial
+    %th Brand
+    %th Host
+    %th Fingerprint
+    %th Manufacturer
+    %th Model
+    %th Incremental
+    %th Product
+    %th Device
+    %th Release
+    %th
+    %th
+    %th
+
+  - @phones.each do |phone|
+    %tr
+      %td= phone.serial
+      %td= phone.brand
+      %td= phone.host
+      %td= phone.fingerprint
+      %td= phone.manufacturer
+      %td= phone.model
+      %td= phone.incremental
+      %td= phone.product
+      %td= phone.device
+      %td= phone.release
+      %td= link_to 'Show', phone
+      %td= link_to 'Edit', edit_phone_path(phone)
+      %td= link_to 'Destroy', phone, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Phone', new_phone_path

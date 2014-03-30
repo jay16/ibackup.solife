@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Phone:
+  = @sm.phone_id
+%p
+  %b Id:
+  = @sm.id_id
+%p
+  %b Number:
+  = @sm.number
+%p
+  %b Name:
+  = @sm.name
+%p
+  %b Date:
+  = @sm.date
+%p
+  %b Content:
+  = @sm.content
+%p
+  %b Type:
+  = @sm.type
+
+= link_to 'Edit', edit_sm_path(@sm)
+\|
+= link_to 'Back', sms_path

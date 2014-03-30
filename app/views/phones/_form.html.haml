@@ -1,0 +1,17 @@
+= simple_form_for(@phone) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :serial
+    = f.input :brand
+    = f.input :host
+    = f.input :fingerprint
+    = f.input :manufacturer
+    = f.input :model
+    = f.input :incremental
+    = f.input :product
+    = f.input :device
+    = f.input :release
+
+  .form-actions
+    = f.button :submit

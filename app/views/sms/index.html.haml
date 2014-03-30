@@ -1,0 +1,31 @@
+%h1 Listing sms
+
+%table
+  %tr
+    %th Phone
+    %th Id
+    %th Number
+    %th Name
+    %th Date
+    %th Content
+    %th Type
+    %th
+    %th
+    %th
+
+  - @sms.each do |sm|
+    %tr
+      %td= sm.phone_id
+      %td= sm.id_id
+      %td= sm.number
+      %td= sm.name
+      %td= sm.date
+      %td= sm.content
+      %td= sm.type
+      %td= link_to 'Show', sm
+      %td= link_to 'Edit', edit_sm_path(sm)
+      %td= link_to 'Destroy', sm, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Sm', new_sm_path

@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Serial:
+  = @phone.serial
+%p
+  %b Brand:
+  = @phone.brand
+%p
+  %b Host:
+  = @phone.host
+%p
+  %b Fingerprint:
+  = @phone.fingerprint
+%p
+  %b Manufacturer:
+  = @phone.manufacturer
+%p
+  %b Model:
+  = @phone.model
+%p
+  %b Incremental:
+  = @phone.incremental
+%p
+  %b Product:
+  = @phone.product
+%p
+  %b Device:
+  = @phone.device
+%p
+  %b Release:
+  = @phone.release
+
+= link_to 'Edit', edit_phone_path(@phone)
+\|
+= link_to 'Back', phones_path
