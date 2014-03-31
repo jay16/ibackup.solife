@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :phone do
+    user
     sequence(:serial) { |n| "serial_#{n}" }
     sequence(:brand) { |n| "brand_#{n}" }
     sequence(:host) { |n| "host_#{n}" }

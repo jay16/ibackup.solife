@@ -1,5 +1,19 @@
 require 'spec_helper'
 
 describe Sm do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @user  = FactoryGirl.create(:user)
+    @phone = FactoryGirl.create(:phone, user: @user)
+    @sms   = FactoryGirl.create(:sm, phone: @phone)
+  end
+
+  it { should validate_presence_of :id_id }
+  it { should validate_presence_of :number }
+  it { should validate_presence_of :content }
+  it { should validate_presence_of :date }
+  it { should validate_presence_of :sms_type }
+
+  after do
+    @user.destroy
+  end
 end

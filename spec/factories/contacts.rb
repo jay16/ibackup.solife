@@ -7,6 +7,6 @@ FactoryGirl.define do
     sequence(:number) { |n| "number_#{n}" }
     sequence(:name) { |n| "name_#{n}" }
     sequence(:photo) { |n| "photo_#{n}" }
-    sequence(:type) { |n| n%2==1 ? "phone" : "sim" }
+    sequence(:contact_type) { |n| n%2==1 ? "phone" : "sim" }
   end
 end
