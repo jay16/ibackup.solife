@@ -6,12 +6,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
 
   def self.validate(token)
     str = Base64.decode64(token)
-    n1 = str[0].to_i
-    n2 = str[1..n1]
+    n1, n2 = str[0].to_i, str[1..n1]
     str = str[n1+n2.length-1..str.length-1]
+
     email = str[0..n2.to_i-1]
     pwd   = str[n2.to_i..str.length-1]
     if user = User.find_by(email: email)
