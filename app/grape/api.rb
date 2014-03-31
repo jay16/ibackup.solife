@@ -1,16 +1,10 @@
+require "entities"
+require "helpers"
 class Api < Grape::API
   prefix "api"
   format :json
 
-  helpers do
-    def current_user
-      @current_user ||= User.validate(params[:token]) if params[:token]
-    end
-
-    def authenticate!
-      error!({ "error" => "401 Unauthorized" }, 401) unless current_user
-    end
-  end
+  helpers APIHelpers
 
   resource :users do
 
@@ -19,7 +13,7 @@ class Api < Grape::API
     # /api/users/validate.json
     get :validate do
       authenticate!
-      current_user.email.to_s
+      present current_user, :with => APIEntities::User
     end
   end
  
