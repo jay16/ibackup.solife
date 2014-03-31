@@ -1,6 +1,7 @@
 class CreatePhones < ActiveRecord::Migration
   def change
     create_table :phones do |t|
+      t.belongs_to :user
       t.string :serial
       t.string :brand
       t.string :host

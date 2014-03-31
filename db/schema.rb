@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140330113756) do
   end
 
   create_table "phones", force: true do |t|
+    t.integer  "user_id"
     t.string   "serial"
     t.string   "brand"
     t.string   "host"
