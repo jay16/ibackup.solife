@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20140330113756) do
     t.string   "number"
     t.string   "name"
     t.string   "photo"
-    t.string   "type"
+    t.string   "contact_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20140330113756) do
     t.string   "name"
     t.string   "date"
     t.string   "content"
-    t.string   "type"
+    t.string   "sms_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

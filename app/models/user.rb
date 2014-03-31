@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }
+  has_many :phones, dependent: :destroy
 
   def self.validate(token)
     str = Base64.decode64(token)

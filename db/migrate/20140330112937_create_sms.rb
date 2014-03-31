@@ -7,7 +7,7 @@ class CreateSms < ActiveRecord::Migration
       t.string :name
       t.string :date
       t.string :content
-      t.string :type
+      t.string :sms_type
 
       t.timestamps
     end

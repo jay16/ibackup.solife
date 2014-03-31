@@ -6,7 +6,7 @@ class CreateContacts < ActiveRecord::Migration
       t.string :number
       t.string :name
       t.string :photo
-      t.string :type
+      t.string :contact_type
 
       t.timestamps
     end
