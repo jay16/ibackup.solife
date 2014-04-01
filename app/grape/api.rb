@@ -22,25 +22,41 @@ class Api < Grape::API
     # validate the phone with find_or_create
     # Example
     #   /api/phones/valiadte.json
-    get :validate do
+    post do
       authenticate!
-      { :action => "validate" }
+
+      phone = current_user.phones
+      .find_or_create_by( serial: params[:phone][:serial], 
+                          manufacturer: params[:phone][:manufacturer], 
+                          model: params[:phone][:model])
+      present phone , :with => APIEntities::Phone
     end
+  end
+
+  resource :sms do
 
     # Post a sms with find_or_create
     # Exaple
-    # /api/phone/1/sms.json
-    get ":id/sms" do
+    # /api/sms.json
+    get "/phones/:phone_id/sms" do
       authenticate!
       { :action => "sms" }
     end
+  end
+
+  resource :contacts do
 
     # Post a contact with find_or_create
     # Exaple
-    # /api/phone/1/contact.json
-    get ":id/contact" do
+    # /api/contact.json
+    post do
       authenticate!
-      { :action => "contact" }
+
+      contact = current_user.phones.find_by(id: params[:phone_id])
+        .contacts.find_or_create_by(
+          id_id: params[:contact][:id_id],
+          number: params[:contact][:number],
+          contact_type: params[:contact][:contact_type])
     end
   end
 

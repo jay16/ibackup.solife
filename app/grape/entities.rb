@@ -9,11 +9,11 @@ module APIEntities
   end
 
   class Phone < Grape::Entity
-    expose :id, :serial, :brand, :host, :fingerprint, :manufacturer
-    expose :model, :incremental, :product, :devise, :release
+    expose :user_id, :id, :serial, :brand, :host, :fingerprint, :manufacturer
+    expose :model, :incremental, :product, :device, :release
   end
 
-  class Sms < Grape::Entity
+  class Sm < Grape::Entity
     expose :id, :id_id, :number, :date, :name, :content, :type
   end
 
