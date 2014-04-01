@@ -13,7 +13,7 @@ class Api < Grape::API
     # /api/users/validate.json
     get :validate do
       authenticate!
-      present current_user, :with => APIEntities::User
+      present current_user, with: APIEntities::User
     end
   end
  
@@ -24,12 +24,12 @@ class Api < Grape::API
     #   /api/phones/valiadte.json
     post do
       authenticate!
-
       phone = current_user.phones
-      .find_or_create_by( serial: params[:phone][:serial], 
-                          manufacturer: params[:phone][:manufacturer], 
-                          model: params[:phone][:model])
-      present phone , :with => APIEntities::Phone
+      .find_or_create_by( 
+        serial: params[:phone][:serial], 
+        manufacturer: params[:phone][:manufacturer], 
+        model: params[:phone][:model])
+      present phone , with: APIEntities::Phone
     end
   end
 
@@ -38,9 +38,17 @@ class Api < Grape::API
     # Post a sms with find_or_create
     # Exaple
     # /api/sms.json
-    get "/phones/:phone_id/sms" do
+    post do
       authenticate!
-      { :action => "sms" }
+      sms = current_user.phones.find_by(id: params[:phone_id])
+        .sms.find_or_create_by(
+          id_id: params[:sms][:id_id],
+          number: params[:sms][:number],
+          content: params[:sms][:content],
+          date: params[:sms][:date],
+          sms_type: params[:sms][:sms_type])
+
+      present sms, with: APIEntities::Sms
     end
   end
 
@@ -48,15 +56,16 @@ class Api < Grape::API
 
     # Post a contact with find_or_create
     # Exaple
-    # /api/contact.json
+    # /api/contacts.json
     post do
       authenticate!
-
       contact = current_user.phones.find_by(id: params[:phone_id])
         .contacts.find_or_create_by(
           id_id: params[:contact][:id_id],
           number: params[:contact][:number],
           contact_type: params[:contact][:contact_type])
+
+      present contact, with: APIEntities::Contact
     end
   end
 

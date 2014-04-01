@@ -9,19 +9,24 @@ describe Api, "sms" do
     end
      
     it "should create a new sms when not exist" do
-      valid_params = { id_id: rand(1000), number: "hh", content: "hh", sms_type: "1" }   
+      valid_params = { id_id: rand(1000), number: "hh", content: "hh", date: "dd", sms_type: "1" }   
       expect {
         post "/api/sms.json", token: @user.token, phone_id: @phone.id, sms: valid_params
       }.to change(@phone.sms, :count).by(1)
     end
 
-    it "should return @phone when exist" do
+    it "should return @sms when exist" do
       @sms = FactoryGirl.create(:sm, phone: @phone)
-      valid_params = { id_id: @sms.id_id, number: @sms.number, sms_type: @sms.sms_type }
+      valid_params = { id_id: @sms.id_id, number: @sms.number, content: @sms.content, date: @sms.date, sms_type: @sms.sms_type }
 
       expect {
-        post "/api/sms.json", token: @user.token, phone_id: @phone.id, sm: valid_params
+        post "/api/sms.json", token: @user.token, phone_id: @phone.id, sms: valid_params
       }.to change(@phone.sms, :count).by(0)
+
+      json = JSON.parse(response.body)
+      expect(json["id"]).to eq(@sms.id)
+      expect(json["id_id"]).to eq(@sms.id_id)
+      expect(json["number"]).to eq(@sms.number)
     end
 
     after do

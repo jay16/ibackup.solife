@@ -15,13 +15,18 @@ describe Api, "contacts" do
       }.to change(@phone.contacts, :count).by(1)
     end
 
-    it "should return @phone when exist" do
+    it "should return @contact when exist" do
       @contact = FactoryGirl.create(:contact, phone: @phone)
       valid_params = { id_id: @contact.id_id, number: @contact.number, contact_type: @contact.contact_type }
 
       expect {
         post "/api/contacts.json", token: @user.token, phone_id: @phone.id, contact: valid_params
       }.to change(@phone.contacts, :count).by(0)
+
+      json = JSON.parse(response.body)
+      expect(json["id"]).to eq(@contact.id)
+      expect(json["id_id"]).to eq(@contact.id_id)
+      expect(json["number"]).to eq(@contact.number)
     end
 
     after do

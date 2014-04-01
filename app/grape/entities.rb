@@ -13,11 +13,11 @@ module APIEntities
     expose :model, :incremental, :product, :device, :release
   end
 
-  class Sm < Grape::Entity
-    expose :id, :id_id, :number, :date, :name, :content, :type
+  class Sms < Grape::Entity
+    expose :id, :id_id, :number, :date, :name, :content, :sms_type
   end
 
   class Contact < Grape::Entity
-    expose :id, :id_id, :number, :name, :photo, :type
+    expose :id, :id_id, :number, :name, :photo, :contact_type
   end
 end
