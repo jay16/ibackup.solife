@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Api, "phones" do
-  describe "POST /api/phone/validate" do
+  describe "POST /api/phones" do
 
     before do
       @user  = FactoryGirl.create(:user)

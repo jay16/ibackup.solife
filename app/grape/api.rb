@@ -21,7 +21,7 @@ class Api < Grape::API
 
     # validate the phone with find_or_create
     # Example
-    #   /api/phones/valiadte.json
+    #   /api/phones.json
     post do
       authenticate!
       phone = current_user.phones
