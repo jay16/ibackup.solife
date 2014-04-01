@@ -29,6 +29,8 @@ class Api < Grape::API
         serial: params[:phone][:serial], 
         manufacturer: params[:phone][:manufacturer], 
         model: params[:phone][:model])
+      phone.update_columns(params[:phone])
+
       present phone , with: APIEntities::Phone
     end
   end
@@ -47,6 +49,7 @@ class Api < Grape::API
           content: params[:sms][:content],
           date: params[:sms][:date],
           sms_type: params[:sms][:sms_type])
+      sms.update_columns(params[:sms])
 
       present sms, with: APIEntities::Sms
     end
@@ -64,6 +67,7 @@ class Api < Grape::API
           id_id: params[:contact][:id_id],
           number: params[:contact][:number],
           contact_type: params[:contact][:contact_type])
+      contact.update_columns(params[:contact])
 
       present contact, with: APIEntities::Contact
     end
