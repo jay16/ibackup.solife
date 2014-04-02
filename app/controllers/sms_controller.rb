@@ -4,7 +4,7 @@ class SmsController < ApplicationController
   # GET /sms
   # GET /sms.json
   def index
-    @sms = Sm.all
+    @sms = current_user.phones.first.sms
   end
 
   # GET /sms/1

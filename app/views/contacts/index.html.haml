@@ -1,6 +1,6 @@
 %h1 Listing contacts
 
-%table
+%table.table.table-hover
   %tr
     %th Phone
     %th Id
@@ -19,7 +19,7 @@
       %td= contact.number
       %td= contact.name
       %td= contact.photo
-      %td= contact.type
+      %td= contact.contact_type
       %td= link_to 'Show', contact
       %td= link_to 'Edit', edit_contact_path(contact)
       %td= link_to 'Destroy', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }
