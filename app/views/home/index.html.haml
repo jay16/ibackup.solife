@@ -1,3 +1,41 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
-= current_user.email
+.container
+  .row
+    .col-md-10.col-md-offset-2
+      .mdl-t
+        .mdl-t-r
+          .mdl-t-m
+            .mdl-t-m-l
+              .mdl-t-m-l-c
+            .mdl-t-m-r
+              .mdl-t-m-r-c  
+      .mdl-m
+        .mdl-m-r 
+          .mdl-m-m
+            .mdl-m-m-l#micloud_left_frame
+              .contact-lieft-padd#contact_left
+                .global-search.mi-search.search-hascon.clearfix
+                  %li
+                  %em#contact_search_cancel{style: "display:none;"}
+                  %input#contact_search_input{type:"text",placeholder:"search people"}
+                .frame-area#contact_frame_resizeable{style: "height:20%;"}
+                  .left-corner
+                  .right-corner
+                  .left-bottom-corner
+                  .right-bottom-corner
+                  .contact-list-div#contactListFrame{style: "height:100%;"}
+                    %ul#scroll_container_contact1.global-list.contact-list{style:"position:relative;display:block;"}
+                      %li.item-space-list{style:"height:4344px;border:0 none;"}
+                      %li.contactlist-index.contact-first{id:"lt-A",style:"position:absolute;top:0px;"}
+                        %p A
+                      = render partial: "contacts/li"
+
+                    %ul#scroll_container_contact2.global-list.contact-list{style:"position:relative;display:none;"}
+
+      .mdl-b
+        .mdl-b-r
+          .mdl-b-m
+            .mdl-b-m-l
+              .mdl-b-m-l-c
+            .mdl-b-m-r
+              .mdl-b-m-r-c      
+  

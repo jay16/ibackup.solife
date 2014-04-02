@@ -1,0 +1,6 @@
+- @contacts.each_with_index do |contact, index|
+  %li.list_selection_item{style:"position:absolute;top:#{32+50*index}px"}
+    .contactlist-container
+      .contactlist-avatar
+      .contact-category
+      %p.contact-nickname= contact.name
