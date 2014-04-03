@@ -1,6 +1,6 @@
 .container
   .row
-    .col-md-10.col-md-offset-2
+    .col-md-10.col-md-offset-1
       .mdl-t
         .mdl-t-r
           .mdl-t-m
@@ -17,12 +17,29 @@
                   %li
                   %em#contact_search_cancel{style: "display:none;"}
                   %input#contact_search_input{type:"text",placeholder:"search people"}
+
+                #contact_select_group.contact-group-select
+                  %a#contact_select_group_trigger.toolmenu{:onclick => "return false"}
+                    %span.group-name{:style => "margin-right:3px"} 所有联系人
+                    %span.group-num (#{@contacts.count})
+                    %em
+                  %em.yel-tooltips
+                    %span.yt-area
+                      %em.yt-corner
+                      %span.yt-con
+                        %b 与手机上显示的联系人数量不一样？
+                        1、i.xiaomi.com 只会同步小米帐户中的联系人数据，手机上其他帐户的联系人（例如您的微信联系人或 SIM 卡联系人）不会在此出现。
+                        %br
+                        2、你可能在手机上或网页上，开启了“仅显示有电话的联系人”选项。
+                        %br
+                        3、在手机上会自动将重复的联系人合并显示。
+
                 .frame-area#contact_frame_resizeable{style: "height:20%;"}
                   .left-corner
                   .right-corner
                   .left-bottom-corner
                   .right-bottom-corner
-                  .contact-list-div#contactListFrame{style: "height:100%;"}
+                  .contact-list-div#contactListFrame{style: "height:100%;min-height:320px;"}
                     %ul#scroll_container_contact1.global-list.contact-list{style:"position:relative;display:block;"}
                       %li.item-space-list{style:"height:4344px;border:0 none;"}
                       %li.contactlist-index.contact-first{id:"lt-A",style:"position:absolute;top:0px;"}

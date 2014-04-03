@@ -2,13 +2,16 @@
 %html
   %head
     %title Ibackup
-    - stylesheet_link_tag "https://land.xiaomi.net/res/c9369bd/css/micloudfe/home.css"
+    = controller_stylesheet_link_tag 
     = stylesheet_link_tag    "application", media: "all",
 "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    - render partial: "layouts/header"
-    %p.notice= notice
-    %p.alert= alert
+    = render partial: "layouts/header" if user_signed_in?
+    .container
+      .row
+        .col-sm-8.col-sm-offset-2{style: "text-align:center;"}
+          %p.notice= notice
+          %p.alert= alert
     = yield
