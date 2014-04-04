@@ -2,10 +2,12 @@
 %html
   %head
     %title Ibackup
-    = controller_stylesheet_link_tag 
-    = stylesheet_link_tag    "application", media: "all",
-"data-turbolinks-track" => true
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"
+    = stylesheet_link_tag "http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css"
+    = controller_stylesheet_link_tag 
+    = controller_javascript_include_tag 
     = csrf_meta_tags
   %body
     = render partial: "layouts/header" if user_signed_in?
