@@ -15,7 +15,7 @@ describe Api, "sms" do
       }.to change(@phone.sms, :count).by(1)
     end
 
-    it "should return @sms when exist" do
+    it "should return @sms.id when exist" do
       @sms = FactoryGirl.create(:sm, phone: @phone)
       valid_params = { id_id: @sms.id_id, number: @sms.number, content: @sms.content, date: @sms.date, sms_type: @sms.sms_type }
 
@@ -25,8 +25,6 @@ describe Api, "sms" do
 
       json = JSON.parse(response.body)
       expect(json["id"]).to eq(@sms.id)
-      expect(json["id_id"]).to eq(@sms.id_id)
-      expect(json["number"]).to eq(@sms.number)
     end
 
     after do

@@ -61,7 +61,7 @@ class Api < Grape::API
         puts e.to_s
       end
 
-      present sms, with: APIEntities::Sms
+      present sms, with: APIEntities::PostWithSms
     end
   end
 
@@ -86,7 +86,7 @@ class Api < Grape::API
           contact_type: params[:contact][:contact_type])
       contact.update_columns(params[:contact]) if contact.valid?
 
-      present contact, with: APIEntities::Contact
+      present contact, with: APIEntities::PostWithContact
     end
   end
 

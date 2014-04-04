@@ -13,8 +13,16 @@ module APIEntities
     expose :model, :incremental, :product, :device, :release
   end
 
+  class PostWithSms < Grape::Entity
+    expose :id
+  end
+
   class Sms < Grape::Entity
     expose :id, :id_id, :number, :date, :name, :content, :sms_type
+  end
+
+  class PostWithContact < Grape::Entity
+    expose :id
   end
 
   class Contact < Grape::Entity
